@@ -1,0 +1,165 @@
+.side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .side-menu.open {
+    animation: softSlideIn 0.8s ease-in-out forwards; /* Мягкая анимация появления */
+  }
+  
+  @keyframes softSlideIn {
+    0% {
+      transform: translateX(-100%); /* Начальное положение */
+    }
+    70% {
+      transform: translateX(10px); /* Чуть дальше, чем нужно */
+    }
+    90% {
+      transform: translateX(-5px); /* Лёгкий откат назад */
+    }
+    100% {
+      transform: translateX(0); /* Финальное положение */
+    }
+  }
+  @keyframes softClose {
+    0% {
+      transform: translateX(0); /* Начальное положение */
+    }
+    50% {
+      transform: translateX(-100%); /* Чуть дальше, чем нужно */
+    }
+    75% {
+    transform: translateX(-95%);
+    }
+    100% {
+      transform: translateX(-100%); /* Финальное положение */
+    }
+  }
+  
+  .side-menu.closed {
+    animation: softClose 0.8s ease-out forwards;
+  }
+  
+  .side-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .side-menu img {
+    padding: 20px ;
+    height: 85px;
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  .side-menu.open img {
+    animation: popIn 0.6s ease-out 1.2s forwards;
+  }
+  
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .side-menu li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+  }
+  
+  .side-menu li button {
+    /* Добавляем начальное состояние для анимации */
+    opacity: 0;
+    transform: scale(0.6);
+    /* Остальные стили кнопок */
+    background: orange;
+    border: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 24px;
+    padding: 12px 25px;
+    border-radius: 1000px;
+    cursor: pointer;
+    width: 80%;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  /* Анимация для кнопок при открытии */
+  .side-menu.open li:nth-child(1) button {
+    animation: popIn 0.4s ease-out 0.4s forwards;
+  }
+  
+  .side-menu.open li:nth-child(2) button {
+    animation: popIn 0.4s ease-out 0.5s forwards;
+  }
+  
+  .side-menu.open li:nth-child(3) button {
+    animation: popIn 0.4s ease-out 0.6s forwards;
+  }
+  .side-menu.open li:nth-child(4) button {
+    animation: popIn 0.4s ease-out 0.7s forwards;
+  }
+  
+  .side-menu.open li:nth-child(5) button {
+    animation: popIn 0.4s ease-out 0.8s forwards;
+  }
+  
+  .side-menu.open li:nth-child(6) button {
+    animation: popIn 0.4s ease-out 0.9s forwards;
+  }
+  .side-menu.open li:nth-child(7) button {
+    animation: popIn 0.4s ease-out 1s forwards;
+  }
+  
+  /* Добавьте больше селекторов по количеству ваших кнопок */
+  
+  .side-menu li button:hover {
+    background-color: darkorange;
+  }
+  
+  @keyframes popIn {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .side-menu.open img { animation-delay: 1s; }
+  .side-menu.open li:nth-child(1) button { animation-delay: 0.2s; }
+  .side-menu.open li:nth-child(2) button { animation-delay: 0.3s; }
+  .side-menu.open li:nth-child(3) button { animation-delay: 0.4s; }
+  .side-menu.open li:nth-child(4) button { animation-delay: 0.5s; }
+  .side-menu.open li:nth-child(5) button { animation-delay: 0.6s; }
+  .side-menu.open li:nth-child(6) button { animation-delay: 0.7s; }
+  .side-menu.open li:nth-child(7) button { animation-delay: 0.8s; }
+  .side-menu.open li:nth-child(8) button { animation-delay: 0.9s; }
+  .side-menu.open li:nth-child(9) button { animation-delay: 1.0s; }

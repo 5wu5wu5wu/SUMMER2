@@ -1,0 +1,277 @@
+/* Стили для фона */
+.login-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Анимация появления фона */
+.login-popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Стили для контейнера */
+.login-popup-container {
+  background: rgb(157, 156, 156);
+  border-radius: 10px;
+  padding: 20px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+/* Анимация появления попапа */
+.login-popup-container.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Дополнительные анимации для элементов формы */
+.login-popup-title {
+  animation: slideUp 0.4s ease forwards;
+}
+
+.login-popup-label {
+  animation: slideRight 0.4s ease forwards 0.6s;
+  opacity: 0;
+}
+
+.login-popup-input {
+  animation: slideRight 0.4s ease forwards 0.4s;
+  opacity: 0;
+}
+.login-popup-input {
+  animation: slideRight 0.4s ease forwards 0.4s;
+  opacity: 0;
+}
+
+.login-popup-button {
+  animation: popIn 0.4s ease forwards 0.6s;
+  opacity: 0;
+}
+
+/* Ключевые кадры для анимаций */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(15px); /* Превышение масштаба */
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2); /* Превышение масштаба */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Дополнительные улучшения для интерактивности */
+.login-popup-button:hover {
+  transform: translateY(-2px);
+  background-color: darkorange;
+  transition: all 0.2s ease;
+}
+
+.login-popup-input:focus {
+  outline: none;
+  border-color: orange;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+}
+
+.popup-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Исправляем z-index для контейнера */
+.login-popup-container {
+  z-index: 1001;
+  /* Остальные стили остаются без изменений */
+}
+
+/* Анимация для контента */
+.popup-content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Задержки для элементов контента */
+.popup-content > *:nth-child(1) { animation-delay: 0.2s; }
+.popup-content > *:nth-child(2) { animation-delay: 0.3s; }
+.popup-content > *:nth-child(3) { animation-delay: 0.4s; }
+/* Добавьте при необходимости больше селекторов */
+
+/* Стили для контейнера */
+.login-popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 15px;
+  padding: 25px;
+}
+
+/* Стили для заголовка */
+.login-popup-title {
+  font-size: 52px;
+  margin: 0; /* Убираем отступы по умолчанию */
+  padding-bottom: 25px;
+}
+
+/* Стили для текстовых меток */
+.login-popup-label {
+  font-size: 32px;
+}
+
+/* Стили для полей ввода */
+.login-popup-input {
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 32px;
+  padding-left: 15px;
+}
+
+/* Стили для кнопки входа */
+.login-popup-button {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: auto;
+  
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border-radius: 1000px;
+  color: white;
+  background: orange;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.context-button {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: auto;
+  
+  padding-left: 35px;
+  
+  color: orange;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+/* Стили для сообщения об ошибке */
+.login-popup-message {
+  color: red;
+  font-size: 24px; /* Добавим размер шрифта для сообщения */
+  text-align: center; /* Выравниваем текст по центру */
+}
+
+  .login-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .login-popup-container.active {
+    opacity: 1;
+    transform: scale(1)
+  }
+
+/* Стили для фона */
+.login-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+
+/* Стили для попапа */
+.login-popup-container {
+  background: white;
+  border-radius: 10px;
+  padding: 50px;
+
+}
+
+
+
+
+/* Кнопка закрытия */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
