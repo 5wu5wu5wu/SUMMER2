@@ -1,6 +1,7 @@
 // src/services/api.js
 const TEST_MODE = true; // Переключить на false для работы с реальным API
 const API_URL = 'http://localhost:3000';
+import avatar from "../modules/default-avatar.svg"
 
 // Тестовые данные
 let testData = {
@@ -11,7 +12,7 @@ let testData = {
         fullName: 'Администратор',
         plotNumber: '001',
         phone: '+7 (999) 123-45-67',
-        avatar: '/default-avatar.png'
+        avatar: '../modules/default-avatar.svg'
       }
     },
     user1: {

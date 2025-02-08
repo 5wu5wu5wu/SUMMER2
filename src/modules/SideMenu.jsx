@@ -29,30 +29,24 @@ const SideMenu = ({ isMenuOpen, isMenuClosing, closeMenu }) => {
         isMenuClosing ? 'closed' : ''
       }`}
     >
-      <button onClick={closeMenu}>
-        <img style={{ height: '150px' }} src={logo} alt="logo" />
-      </button>
       <ul>
         <li>
-          <button onClick={() => {window.location.href = '/profile';}}>Профиль</button>
+        <img style={{ height: '150px', paddingBottom:"100px" }} src={logo} alt="logo"  onClick={closeMenu}/>
         </li>
         <li>
-          <button>Кнопка 2</button>
+        <button onClick={() => {window.location.href = '/';}}>Главная</button>
         </li>
         <li>
-          <button>Кнопка 3</button>
+        <button onClick={() => {window.location.href = '/profile';}}>Профиль</button>
         </li>
         <li>
-          <button>Кнопка 4</button>
+        <button onClick={() => {window.location.href = '/news';}}>Новости</button>
         </li>
         <li>
-          <button>Кнопка 5</button>
+        <button onClick={() => {window.location.href = '/trasport';}}>Проезд</button>
         </li>
         <li>
-          <button>Кнопка 6</button>
-        </li>
-        <li>
-          <button>Кнопка 7</button>
+        <button onClick={() => {window.location.href = '/about';}}>О нас</button>
         </li>
       </ul>
     </div>

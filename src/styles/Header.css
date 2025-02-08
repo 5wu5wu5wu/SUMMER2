@@ -1,0 +1,162 @@
+/* src/components/Header.css */
+.header-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0; /* Убираем margin, чтобы header был прижат к краям */
+    padding: 0px; /* Добавляем padding вместо margin */
+    position: fixed; /* Фиксируем header */
+    top: 0; /* Прижимаем к верхнему краю */
+    left: 0; /* Прижимаем к левому краю */
+    width: 100%; /* Занимаем всю ширину */
+    /* background-color: white; Добавляем фон, чтобы контент под header не был виден */
+    z-index: 1000; /* Убедимся, что header находится поверх других элементов */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.menu-button {
+    margin-right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.logo-image {
+    height: 85px;
+}
+
+.auth-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    position: relative;
+}
+
+.auth-button {
+    height: 50px;
+    border-radius: 25px;
+    color: white;
+    background: orange;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.login-button {
+    width: 120px;
+}
+
+.register-button {
+    width: 220px;
+}
+
+.profile-button {
+    width: 75px;
+    height: 75px;
+    padding: 0;
+    border-radius: 15px;
+    background: orange;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-image {
+    padding: 0;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popIn 0.3s ease-out forwards;
+}
+
+.dropdown-item-with-border {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-top: 1px solid #eee;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popIn 0.3s ease-out forwards;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+.dropdown-item.pop-in {
+    animation: popIn 0.3s ease-out forwards;
+}
+
+.dropdown-item.pop-out {
+    animation: popOut 0.3s ease-out forwards;
+}
+
+.dropdown-item.pop-in:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.dropdown-item.pop-in:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dropdown-item.pop-in:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.dropdown-item.pop-out:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.dropdown-item.pop-out:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.dropdown-item.pop-out:nth-child(3) {
+    animation-delay: 0s;
+}   

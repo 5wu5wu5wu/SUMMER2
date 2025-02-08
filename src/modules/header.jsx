@@ -1,21 +1,30 @@
 // src/components/Header.js
-// src/components/Header.js
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Добавляем импорты
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import usePopup from '../hooks/usePopup';
 import LoginPopup from './LoginPopup';
 import RegisterPopup from './RegisterPopup';
 import SideMenu from './SideMenu';
 import { useCookies } from 'react-cookie';
-// import { getUserData, updateUserData, uploadAvatar } from '../services/api';
+import { getUserData, updateUserData, uploadAvatar } from '../services/api';
+import avatar from './default-avatar.svg';
+import '../styles/Header.css'; // Импортируем CSS
 
 const Header = () => {
-  const location = useLocation(); // Получаем доступ к состоянию маршрута
-  const navigate = useNavigate(); // Добавляем для управления навигацией
-  const [cookies, setCookie] = useCookies(['token']); // Используем useCookies
+  const [tempAvatar, setTempAvatar] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userData, setUserData] = useState({
+    fullName: '',
+    plotNumber: '',
+    phone: '',
+    avatar: ''
+  });
+
   const {
     isFirstPopupOpen,
     isSecondPopupOpen,
@@ -31,13 +40,12 @@ const Header = () => {
   useEffect(() => {
     if (location.state?.requireAuth) {
       openFirstPopup();
-      // Очищаем состояние маршрута после открытия попапа
       navigate(location.pathname, { 
         replace: true,
         state: {} 
       });
     }
-  }, [location.state]); // Срабатывает при изменении состояния маршрута
+  }, [location.state]);
 
   useEffect(() => {
     if (cookies.token) {
@@ -46,36 +54,23 @@ const Header = () => {
   }, [cookies.token]);
 
   const handleLoginSuccess = (token) => {
-    setCookie('token', token, { path: '/' }); // Устанавливаем куки
-    setIsLoggedIn(true); // Обновляем состояние авторизации
-    closePopup(); // Закрываем попап
+    setCookie('token', token, { path: '/' });
+    setIsLoggedIn(true);
+    closePopup();
   };
 
-  // Обработка выхода
   const handleLogout = () => {
-    setCookie('token', '', { path: '/', expires: new Date(0) }); // Удаляем куки
-    setIsLoggedIn(false); // Обновляем состояние авторизации
+    setCookie('token', '', { path: '/', expires: new Date(0) });
+    setIsLoggedIn(false);
   };
 
   const ProfileDropdown = () => (
-    <div style={{
-      position: 'absolute',
-      right: '20px',
-      top: '100px',
-      backgroundColor: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      zIndex: 1000,
-    }}>
-      <div style={{ padding: '10px 20px', cursor: 'pointer' }}>
+    <div className="profile-dropdown">
+      <div className="dropdown-item" onClick={() => {window.location.href = '/profile';}}>
         Профиль
       </div>
       <div 
-        style={{ 
-          padding: '10px 20px', 
-          cursor: 'pointer',
-          borderTop: '1px solid #eee'
-        }}
+        className="dropdown-item-with-border"
         onClick={handleLogout}
       >
         Выход
@@ -85,39 +80,33 @@ const Header = () => {
 
   return (
     <div>
-      <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", margin: "20px"}}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button onClick={openMenu} style={{ marginRight: '20px', background: 'none', border: 'none', fontSize: '24px' }}>
-            <img style={{height: "85px"}} src={logo} alt="logo" />
+      <div className="header-container">
+        <div className="logo-container">
+          <button onClick={openMenu} className="menu-button">
+            <img className="logo-image" src={logo} alt="logo" />
           </button>
         </div>
         
-        <div style={{display: "flex", gap: "10px", marginTop: "25px", position: 'relative'}}>
+        <div className="auth-buttons-container">
           {isLoggedIn ? (
             <>
               <button
-                style={{
-                  padding:"10px",
-                  borderRadius: "50%",
-                  background: "orange",
-                  border: "none",
-                  cursor: 'pointer',
-                }}
+                className="profile-button"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                {/* <img style={{height:"35px"}} src={tempAvatar || userData.avatar || '/default-avatar.png'} alt="" /> */}
+                <img className="profile-image" src={avatar} alt="Профиль" />
               </button>
               {dropdownOpen && <ProfileDropdown />}
             </>
           ) : (
             <>
               <button 
-                style={{height: "50px", width: "120px", borderRadius: "25px", color: "white", background: "orange", border: "none", fontSize: "28px"}} 
+                className="auth-button login-button" 
                 onClick={openFirstPopup}>
                 Вход
               </button>
               <button 
-                style={{height: "50px", width: "220px", borderRadius: "25px", color: "white", background: "orange", border: "none", fontSize: "28px"}}
+                className="auth-button register-button"
                 onClick={openSecondPopup}>
                 Регистрация
               </button>

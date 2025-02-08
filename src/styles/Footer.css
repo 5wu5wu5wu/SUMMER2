@@ -1,0 +1,105 @@
+/* src/components/Footer.css */
+.footer-container {
+    position: 0; /* Фиксированное позиционирование */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease-in-out; /* Плавное появление/скрытие */
+    z-index: 1000; /* Чтобы футер был поверх других элементов */
+}
+
+/* Начальная видимость футера */
+.footer-container {
+    transition: transform 0.3s ease-in-out; /* плавное скрытие/появление футера */
+  }
+  
+  /* Когда футер виден */
+  .footer-container.visible {
+    transform: translateY(0); /* футер на месте */
+  }
+  
+  /* Когда футер скрыт */
+  .footer-container.hidden {
+    transform: translateY(100%); /* футер сдвигается вниз, скрывается */
+  }
+  
+
+/* Остальные ваши стили */
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer-heading {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #f1c40f;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #f1c40f;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-icon {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #34495e;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #bdc3c7;
+    margin: 0;
+}
